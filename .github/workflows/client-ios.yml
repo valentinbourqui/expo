@@ -30,7 +30,7 @@ jobs:
       - uses: ./.github/actions/slack
         if: always()
         with:
-          text: @nick is testing <https://github.com/expo/expo/actions|me>
+          text: '@nick is testing <https://github.com/expo/expo/tree/%40nick/ios-shell-slack|me>'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_api }}
