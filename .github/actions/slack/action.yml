@@ -1,0 +1,9 @@
+name: 'Slack Webhook Message'
+description: 'Post a message to a slack webhook'
+inputs:
+  text:
+    description: 'What to say'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'

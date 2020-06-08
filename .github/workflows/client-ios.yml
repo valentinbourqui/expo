@@ -14,7 +14,6 @@ on:
       - Gemfile.lock
       - .ruby-version
   push:
-    branches: [ master, sdk-* ]
     paths:
       - .github/workflows/client-ios.yml
       - ios/**
@@ -28,6 +27,14 @@ jobs:
   build:
     runs-on: macos-10.15
     steps:
+      - uses: ./.github/actions/slack
+        if: always()
+        with:
+          text: @nick is testing <https://github.com/expo/expo/actions|me>
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_api }}
+      - run: exit 1
       - uses: actions/checkout@v2
         with:
           submodules: true
