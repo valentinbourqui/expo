@@ -5,5 +5,7 @@ inputs:
     description: 'What to say'
     required: true
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    TEXT: ${{ inputs.text }}

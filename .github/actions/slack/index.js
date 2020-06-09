@@ -6,8 +6,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  const text = core.getInput('text');
-  core.info(message)
+  core.info(`from client: ${core.getInput('text')}`);
+  const text = process.env.TEXT;
+  core.info(`from env: ${text}`);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   core.info(`The event payload: ${payload}`);
 
