@@ -2,11 +2,11 @@ name: Expotools
 
 on:
   push:
-    branches: [ master, 'sdk-*' ]
     paths:
       - .github/workflows/expotools.yml
       - tools/expotools/**
   pull_request:
+    branches: [ master ]
     paths:
       - .github/workflows/expotools.yml
       - tools/expotools/**
