@@ -7,7 +7,6 @@ on:
       - .github/workflows/expotools.yml
       - tools/expotools/**
   pull_request:
-    branches: [ master ]
     paths:
       - .github/workflows/expotools.yml
       - tools/expotools/**
@@ -17,6 +16,14 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - uses: ./.github/actions/slack
+        if: always()
+        with:
+          text: '@nick is testing <https://github.com/expo/expo/tree/%40nick/ios-shell-slack|me>'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_api }}
+      - run: exit 1
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
