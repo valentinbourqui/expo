@@ -6,9 +6,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  core.info(`from client: ${core.getInput('text')}`);
-  const text = process.env.TEXT;
-  core.info(`from env: ${text}`);
+  const text = core.getInput('text');
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   core.info(`The event payload: ${payload}`);
 
@@ -29,7 +27,7 @@ try {
       path: url.path,
       headers: {
           'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(post_data)
+          'Content-Length': Buffer.byteLength(data)
       }
   };
 
