@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/expotools.yml
       - tools/expotools/**
+      - .github/actions/slack/**
   pull_request:
     branches: [ master ]
     paths:
